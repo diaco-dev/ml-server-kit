@@ -1,0 +1,42 @@
+mlops-platform/
+├── backend/                  # FastAPI
+│   ├── app/
+│   │   ├── api/v1/
+│   │   ├── core/
+│   │   ├── models/          # SQLAlchemy models
+│   │   ├── schemas/
+│   │   ├── services/
+│   │   └── utils/
+│   ├── Dockerfile
+│   └── requirements.txt
+├── worker/                   # Celery workers
+│   ├── tasks/
+│   ├── Dockerfile
+│   └── requirements.txt
+├── kubernetes/               # main Helm chart
+│   ├── mlops-platform/
+│   │   ├── Chart.yaml
+│   │   ├── values.yaml
+│   │   ├── templates/
+│   │   │   ├── deployment-backend.yaml
+│   │   │   ├── deployment-worker.yaml
+│   │   │   ├── service.yaml
+│   │   │   ├── ingress.yaml
+│   │   │   └── model-template.yaml  # or kustomize
+├── model-deployment-templates/
+│   ├── base-dockerfile.j2
+│   ├── pytorch-serving/
+│   ├── tensorflow-serving/
+│   └── sklearn-fastapi/
+├── monitoring/
+│   ├── prometheus/
+│   ├── grafana/dashboards/
+│   └── alert-rules.yaml
+├── scripts/
+│   ├── deploy_model.py      # local test
+│   └── rollback_model.py
+├── docs/
+│   ├── architecture.md
+│   └── api-spec.openapit.yaml
+├── .github/workflows/
+└── README.md

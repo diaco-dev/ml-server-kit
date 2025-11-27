@@ -1,0 +1,31 @@
+Technology Stack - MLOps Platform
+====================================================
+
+Layer                  | Technology                          | Version / Notes
+-----------------------|-------------------------------------|----------------------------------
+Backend API            | FastAPI                             | Python 3.11+ (async, auto OpenAPI)
+Web Framework          | Uvicorn + Gunicorn                  | Production ASGI server
+Task Queue             | Celery                              | With Redis or RabbitMQ broker
+Message Broker         | Redis 7+ or RabbitMQ 3.12+          | Redis recommended for simplicity
+Database               | PostgreSQL                          | 15 or 16 (with TimescaleDB optional)
+Object Storage         | MinIO (S3-compatible) or AWS S3     | For model artifacts & metadata
+Container Registry     | Harbor 2.x (preferred)              | With built-in Trivy, replication, proxy
+                                   | Alternatives: ECR, GCR, Nexus, Docker Hub
+Orchestration          | Kubernetes                          | 1.28+ (EKS, GKE, AKS or self-hosted)
+GitOps / Delivery      | ArgoCD                              | Declarative deployments
+                       | Optional: Flux or Tekton pipelines
+Service Mesh (opt.)    | Istio                               | 1.20+ for mTLS, observability, routing
+API Gateway / Ingress  | Traefik or Istio Gateway            | Automatic TLS + rate limiting
+Monitoring             | Prometheus + kube-prometheus-stack  | Full K8s + app metrics
+Visualization          | Grafana                             | 10+ (with pre-built dashboards)
+Logging                | Grafana Loki + Promtail             | Lightweight log aggregation
+Alerting               | Alertmanager                        | With Slack/Telegram/PagerDuty webhooks
+Security Scanning      | Trivy (Aquasecurity)                | Image & IaC vulnerability scanning
+Policy Enforcement     | Open Policy Agent (OPA) / Gatekeeper| Admission control
+Drift & Quality        | Evidently AI or Alibi Detect        | Integrated in model containers
+Infrastructure as Code | Helm 3 + Kustomize                  | Helm for packaging, Kustomize for overlays
+CI/CD                  | GitHub Actions or GitLab CI         | Build & push images, run tests
+Secret Management      | HashiCorp Vault or Sealed Secrets   | Preferred: External Secrets Operator
+Tracing (optional)     | OpenTelemetry + Jaeger/Tempo        | Distributed tracing for request flow
+
+This stack is currently used in multiple enterprise-grade MLOps platforms and is fully cloud-agnostic and production-proven.
