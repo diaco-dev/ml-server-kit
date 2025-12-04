@@ -47,17 +47,23 @@ mlops-mvp/
 ├── backend/
 │   ├── app/
 │   │   ├── main.py
+│   │   ├── database.py
 │   │   ├── models.py
-│   │   └── router.py
+│   │   ├── schemas.py
+│   │   ├── crud.py
+│   │   ├── celery_app.py
+│   │   ├── tasks.py
+│   │   └── routers/
+│   │       └── models.py
+│   ├── alembic/                  # migration
+│   │   └── versions/
 │   ├── requirements.txt
 │   └── Dockerfile
-├── worker/
-│   ├── celery_worker.py
-│   ├── tasks.py
-│   └── Dockerfile
-├── models-storage/
-├── registry.db
-├── docker-compose.yml
 ├── model-template/
 │   └── serve.py
+├── models-storage/   # storage model
+├── docker-compose.yml
+├── prometheus.yml
+├── grafana/
+│   └── provisioning/
 └── README.md
